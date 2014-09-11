@@ -60,11 +60,11 @@
 		var switchBlock = 371337;
 		$.get( "https://chain.so/api/v2/get_info/DOGE", function( response ) {
 			if (response.status == "success") {
+				window.setInterval(function(){ 
 				latestBlock = response.data.blocks;
 				var blocksLeft = switchBlock - latestBlock;
 				var now = Math.round(new Date().getTime() / 1000);
 				var timeExact = now + (blocksLeft * 60);
-				window.setInterval(function(){ 
 					$("#countdown").html("");
 					$( "#countdown")
 						.append( "Fork Time: " + new Date(timeExact*1000).toLocaleString() + "<br/>" )
