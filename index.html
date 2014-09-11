@@ -61,7 +61,7 @@
 						window.setInterval(function(){ 
 		$.get( "https://chain.so/api/v2/get_info/DOGE", function( response ) {
 			if (response.status == "success") {
-			if (response.data.blocks == 371337){
+			if (response.data.blocks > 371337){
 				$( "#countdown")
 						.append( "Woohoo! Forkening!" )
 			}else{
