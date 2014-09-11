@@ -61,13 +61,13 @@
 						window.setInterval(function(){ 
 		$.get( "https://chain.so/api/v2/get_info/DOGE", function( response ) {
 			if (response.status == "success") {
-				latestBlock = response.data.blocks;
-				var blocksLeft = switchBlock - latestBlock;
-				var now = Math.round(new Date().getTime() / 1000);
-				var timeExact = now + (blocksLeft * 60);
+			//	latestBlock = response.data.blocks;
+			//	var blocksLeft = switchBlock - latestBlock;
+			//	var now = Math.round(new Date().getTime() / 1000);
+			//	var timeExact = now + (blocksLeft * 60);
 					$("#countdown").html("");
 					$( "#countdown")
-						.append( "Fork Time: " + new Date(timeExact*1000).toLocaleString() + "<br/>" )
+			//			.append( "Fork Time: " + new Date(timeExact*1000).toLocaleString() + "<br/>" )
 						.append( "Current Block: " + response.data.blocks + "<br/>" )
 						.append( "Blocks Left: " + (371337 - response.data.blocks) + "<br/>" )
 			}
