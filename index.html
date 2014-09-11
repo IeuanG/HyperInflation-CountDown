@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+    <title>DogeCoin AuxPOW Countdown</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- siimple style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+	<div id="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<h1>Dogecoin AuxPOW Switch Coundown</h1>
+					<h2 class="subtitle">The Dogecoin Devs have been working hard to get AuxPOW working! Keep this open and check back now and then to see how far we have to go!</h2>
+					
+<div id="countdown">
+
+</div>
+						
+					
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+						<p class="copyright">Created by <a href="http://reddit.com/u/IeuanG">IeuanG</a> with some code from <a href="http://reddit.com/u/langerhans">Langerhans</a>.</p>
+	
+<p class="layoutattr">Layout by <a href="http://bootstraptaste.com/">BootStrapTaste</a></p>
+			</div>
+			</div>		
+		</div>
+	</div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.countdown.min.js"></script>
+	  
+</body>
+
+
+<script type="text/javascript">
+  
+		var latestBlock;
+		var switchBlock = 371337;
+		$.get( "https://chain.so/api/v2/get_info/DOGE", function( response ) {
+			if (response.status == "success") {
+				latestBlock = response.data.blocks;
+				var blocksLeft = switchBlock - latestBlock;
+				var now = Math.round(new Date().getTime() / 1000);
+				var timeExact = now + (blocksLeft * 60);
+				setInterval(function(){ 
+					$("#countdown").html("");
+					$( "#countdown")
+						.append( "Fork Time: " + new Date(timeExact*1000).toLocaleString() + "<br/>" )
+						.append( "Current Block: " + response.data.blocks + "<br/>" )
+						.append( "Blocks Left: " + (371337 - response.data.blocks) + "<br/>" )
+				}, 5000);
+			}
+		}, "json" );
+	</script>
+</html>
